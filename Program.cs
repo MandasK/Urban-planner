@@ -7,14 +7,16 @@ namespace Planner
     {
         static void Main(string[] args)
         {
-            List<Building> ListBuildings = new List<Building>();
+            City Kingston = new City("Kingston");
+            Kingston.Setmayor("King Amanda");
+
             Building SesameStreet = new Building("123 Sesame St");
             SesameStreet.Stories = 5;
             SesameStreet.Width = 1500;
             SesameStreet.Depth = 1800;
             SesameStreet.Construct();
             SesameStreet.Purchase("Bert and Ernie");
-            ListBuildings.Add(SesameStreet);
+            Kingston.AddBuilding(SesameStreet);
 
             Building HomeSweetHome = new Building("210 Prince Ave");
             HomeSweetHome.Stories = 2;
@@ -22,7 +24,7 @@ namespace Planner
             HomeSweetHome.Depth = 1900;
             HomeSweetHome.Construct();
             HomeSweetHome.Purchase("The Kings");
-            ListBuildings.Add(HomeSweetHome);
+            Kingston.AddBuilding(HomeSweetHome);
 
             Building YoMommasHouse = new Building("4648 SweetBriar");
             YoMommasHouse.Stories = 1;
@@ -30,11 +32,15 @@ namespace Planner
             YoMommasHouse.Depth = 2200;
             YoMommasHouse.Construct();
             YoMommasHouse.Purchase("Mom and Dad");
-            ListBuildings.Add(YoMommasHouse);
+            Kingston.AddBuilding(YoMommasHouse);
 
-            SesameStreet.DisplayInformation();
-            HomeSweetHome.DisplayInformation();
-            YoMommasHouse.DisplayInformation();
+            Kingston.Welcome();
+            foreach (Building building in Kingston.ListBuildings)
+            {
+                building.DisplayInformation();
+                Console.WriteLine();
+
+            }
         }
     }
 }
